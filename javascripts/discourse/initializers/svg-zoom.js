@@ -23,6 +23,7 @@ export default {
                 <!DOCTYPE html>
                 <html>
                 <head>
+                    <meta charset="UTF-8">
                     <title>SVG Zoom View</title>
                     <style>
                         body { margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
@@ -35,7 +36,7 @@ export default {
                 </html>
               `;
               
-              const blob = new Blob([html], { type: 'text/html' });
+              const blob = new Blob([html], { type: 'text/html;charset=UTF-8' });
               const blobUrl = URL.createObjectURL(blob);
               
               window.open(blobUrl, '_blank', 'width=800,height=600');
