@@ -14,6 +14,35 @@ export default {
             zoomLink.textContent = 'zoom';
             zoomLink.className = 'svg-zoom-link';
             
+            zoomLink.addEventListener('click', function(e) {
+              e.preventDefault();
+              
+              const svgClone = svg.cloneNode(true);
+              
+              const html = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>SVG Zoom View</title>
+                    <style>
+                        body { margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+                        svg { max-width: 95vw; max-height: 95vh; }
+                    </style>
+                </head>
+                <body>
+                    ${svgClone.outerHTML}
+                </body>
+                </html>
+              `;
+              
+              const blob = new Blob([html], { type: 'text/html' });
+              const blobUrl = URL.createObjectURL(blob);
+              
+              window.open(blobUrl, '_blank', 'width=800,height=600');
+              
+              setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+            });
+            
             svg.insertAdjacentElement('afterend', zoomLink);
           }
         });
@@ -23,7 +52,6 @@ export default {
         addZoomLinksToSVGs();
       });
 
-      // Für dynamisch nachgeladene Inhalte
       const observer = new MutationObserver(mutations => {
         mutations.forEach(mutation => {
           if (mutation.addedNodes.length) {
