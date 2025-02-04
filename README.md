@@ -8,6 +8,9 @@ A simple theme component that adds a zoom link under Mermaid/SVG elements in pos
 - Works with dynamically loaded content
 - Minimal and unobtrusive
 
+![CleanShot 2025-02-04 at 02 52 56@2x](https://github.com/user-attachments/assets/fac744fa-798a-4f91-9611-d12a3a40fa91)
+
+
 ## Installation
 
 1. Go to Admin -> Customize -> Themes
